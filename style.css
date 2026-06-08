@@ -169,7 +169,7 @@ p{
 }
 
 /* ==========================================================================
-   SECCIÓN COMPLETA DEL OVERLAY Y SOBRE PLANO CON ANIMACIÓN DE APERTURA
+   SECCIÓN COMPLETA DEL OVERLAY, SOBRE Y MONOGRAMA AUTO-RESPONSIVE
    ========================================================================== */
 
 .overlay {
@@ -180,7 +180,7 @@ p{
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  padding: 20px;
+  padding: 15px;
   box-sizing: border-box;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -198,17 +198,15 @@ p{
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 420px;
-  padding: 20px 10px;
+  max-width: 360px; /* Ancho seguro para cualquier celular moderno */
   box-sizing: border-box;
-  background-color: transparent;
 }
 
-/* Tarjeta del Sobre Plano */
+/* Tarjeta del Sobre Plano Proporcional */
 .envelope {
   width: 100%;
-  height: 600px;
-  max-height: 80vh;
+  aspect-ratio: 2 / 3; /* Proporción limpia de tarjeta vertical */
+  max-height: 75vh; /* No choca con las barras del navegador móvil */
   position: relative;
   cursor: pointer;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -221,10 +219,6 @@ p{
   transition: transform 0.3s ease;
 }
 
-.envelope:hover {
-  transform: scale(1.02);
-}
-
 /* Marcos Decorativos Lineales */
 .envelope-border {
   position: absolute;
@@ -233,8 +227,8 @@ p{
   border-radius: 6px;
   z-index: 5;
 }
-.envelope-border-outer { inset: 15px; }
-.envelope-border-inner { inset: 22px; }
+.envelope-border-outer { inset: 12px; }
+.envelope-border-inner { inset: 18px; }
 
 /* Cuerpo Central */
 .envelope-body-flat {
@@ -244,31 +238,50 @@ p{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 20px;
   box-sizing: border-box;
   z-index: 2;
 }
 
-/* Logotipo Circular Central */
-.envelope-logo {
-  margin-bottom: 25px;
+/* Monograma Adaptativo (Se encoge según el contenedor) */
+.envelope-monogram {
+  margin-bottom: 5vh; /* Margen proporcional a la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.logo-circle {
-  width: 85px;
-  height: 85px;
-  border: 2px dashed #eaf3f2;
+.monogram-inner {
+  width: 24vw; /* Se adapta dinámicamente al ancho del dispositivo */
+  height: 24vw;
+  max-width: 90px; /* Tamaño tope en pantallas grandes */
+  max-height: 90px;
   border-radius: 50%;
+  border: 1px solid rgba(234, 243, 242, 0.4);
+  outline: 1.5px dashed #eaf3f2;
+  outline-offset: -5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(234, 243, 242, 0.1);
+  background: rgba(234, 243, 242, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
-.logo-circle span {
+.monogram-inner span {
   font-family: 'Great Vibes', cursive;
-  font-size: 28px;
+  font-size: 7vw; /* Escala de fuente fluida */
+  max-font-size: 26px; /* Evita desbordamiento en PC */
   color: #eaf3f2;
+  white-space: nowrap;
+  line-height: 1;
+  display: block;
+}
+
+/* Al tope en PC o pantallas anchas fijamos tamaños */
+@media (min-width: 420px) {
+  .monogram-inner span { font-size: 26px; }
 }
 
 /* Textos del Sobre */
@@ -282,7 +295,7 @@ p{
 .envelope-text-container strong {
   display: block;
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
+  font-size: 24px;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 2px;
@@ -293,32 +306,32 @@ p{
 .envelope-subtitle {
   display: block;
   font-family: 'Great Vibes', cursive;
-  font-size: 36px;
-  margin-bottom: 15px;
+  font-size: 32px;
+  margin-bottom: 12px;
   color: #eaf3f2;
 }
 
 .envelope-date {
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
 
 /* ==========================================================================
-   INDICADOR DE CLICK (.clic)
+   INDICADOR DE CLICK
    ========================================================================== */
 
 .indicador-click {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 20px;
   width: 100%;
 }
 
 .indicador-click p {
   font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #9bb8b3;
   animation: parpadeo 2.5s infinite;
@@ -331,69 +344,12 @@ p{
   100% { opacity: 0.3; }
 }
 
-/* Ajustes en Celulares */
-@media (max-width: 480px) {
-  .envelope { height: 500px; }
-  .envelope-text-container strong { font-size: 24px; }
-  .envelope-subtitle { font-size: 30px; }
-  .envelope-date { font-size: 12px; }
-  .logo-circle { width: 75px; height: 75px; }
-  .logo-circle span { font-size: 24px; }
+/* Ajustes finos para celulares muy angostos */
+@media (max-width: 360px) {
+  .envelope-text-container strong { font-size: 20px; }
+  .envelope-subtitle { font-size: 26px; }
+  .envelope-date { font-size: 11px; }
 }
-
-
-/* ==========================================================================
-   ESTILO DEL MONOGRAMA CENTRAL (LETRAS DENTRO DEL CÍRCULO)
-   ========================================================================== */
-
-.envelope-monogram {
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.monogram-inner {
-  width: 110px; /* Aumentamos el diámetro para dar espacio a la tipografía */
-  height: 110px;
-  border-radius: 50%;
-  border: 1px solid rgba(234, 243, 242, 0.4);
-  outline: 1.5px dashed #eaf3f2;
-  outline-offset: -6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(234, 243, 242, 0.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
-}
-
-.monogram-inner span {
-  font-family: 'Great Vibes', cursive;
-  font-size: 28px; /* Reducimos el tamaño para garantizar que no sobrepase el borde */
-  color: #eaf3f2;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-  line-height: 1;
-  display: inline-block;
-  padding: 0 10px; /* Margen interno de seguridad */
-}
-
-/* Ajustes en Celulares */
-@media (max-width: 480px) {
-  .monogram-inner {
-    width: 95px;
-    height: 95px;
-    outline-offset: -5px;
-  }
-  .monogram-inner span {
-    font-size: 24px;
-    padding: 0 8px;
-  }
-}
-
-
 
 /* ===============================
    BOTON MUSICA
