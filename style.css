@@ -1,0 +1,424 @@
+/* ===============================
+   RESET
+=============================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Playfair Display', serif;
+  background:
+    linear-gradient(180deg,#f7fbfb,#ffffff),
+    url("https://www.transparenttextures.com/patterns/soft-wallpaper.png");
+  color:#1f1f1f;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* ===============================
+   CONTENEDOR GENERAL
+=============================== */
+
+#content{
+  padding:40px 20px 70px;
+  max-width:650px;
+  margin:auto;
+}
+
+/* ===============================
+   FOTO SUPERIOR
+=============================== */
+
+.photo{
+  width:260px;
+  border-radius:16px;
+  border:2px solid #c7a35d;
+  margin:20px auto;
+}
+
+/* ===============================
+   FRASES VERDES
+=============================== */
+
+.soft-text,
+.bible,
+.parents-intro,
+.padrinos-intro{
+  color:#9bb8b3;
+  font-style:italic;
+  font-size:18px;
+  line-height:1.7;
+  margin:25px 0;
+}
+
+/* ===============================
+   NOMBRES PRINCIPALES
+=============================== */
+
+.names{
+  font-family:'Great Vibes', cursive;
+  font-size:60px;
+  color:#9bb8b3;
+  margin:20px 0 10px;
+}
+
+/* ===============================
+   TITULOS NEGROS
+=============================== */
+
+h2,h3{
+  font-size:20px;
+  font-weight:700;
+  margin-top:28px;
+  margin-bottom:6px;
+}
+
+/* ===============================
+   TEXTOS
+=============================== */
+
+p{
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* ===============================
+   BLOQUES
+=============================== */
+
+.section{
+  margin:35px 0;
+}
+
+/* ===============================
+   PADRES / PADRINOS
+=============================== */
+
+.people-block{
+  margin-top:12px;
+}
+
+.people-block p{
+  font-size:17px;
+}
+
+/* ===============================
+   ITINERARIO
+=============================== */
+
+.itinerary-item{
+  margin-bottom:18px;
+}
+
+/* ===============================
+   CALENDARIO
+=============================== */
+
+.calendar{
+  margin-top:25px;
+}
+
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  margin-top:12px;
+}
+
+.heart-day{
+  background:#9bb8b3;
+  color:#fff;
+  border-radius:6px;
+}
+
+/* ===============================
+   RSVP
+=============================== */
+
+.rsvp-icons{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  margin-top:25px;
+}
+
+.rsvp-icons a{
+  text-decoration:none;
+  color:#1f1f1f;
+  font-weight:600;
+}
+
+/* ===============================
+   ICONOS (CON ANIMACION)
+=============================== */
+
+.icon-svg,
+.ring{
+  width:46px;
+  margin-bottom:8px;
+  animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.12);}
+  100%{transform:scale(1);}
+}
+
+/* ===============================
+   SOBRE
+=============================== */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(247,251,251,0.96);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.envelope{
+  width:340px;
+  height:230px;
+  background:#9bb8b3;
+  border-radius:10px;
+  position:relative;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+.envelope-body{
+  position:absolute;
+  inset:0;
+  background:#eaf3f2;
+  border-radius:10px;
+}
+
+.flap{
+  position:absolute;
+  top:0;
+  width:100%;
+  height:50%;
+  background:#9bb8b3;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+}
+
+.envelope-text{
+  position:absolute;
+  bottom:40px;
+  width:100%;
+  font-size:20px;
+  color:#1f1f1f;
+  font-weight:600;
+}
+
+/* ===============================
+   BOTON MUSICA
+=============================== */
+
+#musicBtn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#9bb8b3;
+  border:none;
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  z-index:5000;
+}
+
+/* ===============================
+   CORAZONES FLOTANTES
+=============================== */
+
+.heart{
+  position:fixed;
+  top:-10%;
+  left:-10%;
+  font-size:18px;
+  color:#9bb8b3;
+  opacity:0.7;
+  animation:floatHeart 12s linear infinite;
+}
+
+@keyframes floatHeart{
+  from{
+    transform:translate(-10%, -10%);
+  }
+  to{
+    transform:translate(120vw,120vh);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+
+@media(max-width:480px){
+  .names{font-size:46px;}
+  p{font-size:16px;}
+}
+
+/* ===============================
+   TARJETAS PARA SECCIONES
+=============================== */
+
+.section{
+  background:#ffffff;
+  border:1px solid rgba(155,184,179,0.35);
+  border-radius:18px;
+  padding:28px 18px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.04);
+}
+
+/* ===============================
+   CONTADOR
+=============================== */
+
+.countdown{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.countdown div{
+  background:#ffffff;
+  border:2px solid #9bb8b3;
+  border-radius:14px;
+  width:90px;
+  padding:12px 6px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+
+.countdown span{
+  display:block;
+  font-size:26px;
+  font-weight:700;
+  color:#9bb8b3;
+}
+
+.countdown small{
+  font-size:13px;
+}
+
+/* ===============================
+   CALENDARIO TARJETA
+=============================== */
+
+.calendar{
+  background:#ffffff;
+  border:2px solid rgba(155,184,179,0.4);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.05);
+}
+
+
+/* ===============================
+   CORAZONES FLOTANTES SUAVES
+=============================== */
+
+.heart{
+  position:fixed;
+  top:-10%;
+  left:-10%;
+  font-size:100px;
+  color:#9bb8b3;
+  opacity:0.18;
+  pointer-events:none;
+  animation:heartFall linear infinite;
+}
+
+@keyframes heartFall{
+  0%{
+    transform:translate(0,0) scale(1);
+  }
+  100%{
+    transform:translate(120vw,120vh) scale(1.4);
+  }
+}
+
+/* tiempos distintos */
+.heart:nth-child(1){animation-duration:18s;}
+.heart:nth-child(2){animation-duration:22s;}
+.heart:nth-child(3){animation-duration:26s;}
+.heart:nth-child(4){animation-duration:30s;}
+.heart:nth-child(5){animation-duration:34s;}
+
+.envelope-text{
+  text-align:center;
+  line-height:1.5;
+}
+
+.envelope-text span{
+  display:block;
+}
+
+/* ===============================
+   TARJETAS ELEGANTES
+=============================== */
+
+.dresscode,
+.rsvp{
+  background:#ffffff;
+  border:1.5px solid #9bb8b3;
+  border-radius:22px;
+  padding:35px 25px;
+  margin:45px 0;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* TITULOS */
+
+.dresscode h3,
+.rsvp h3{
+  color:#9bb8b3;
+  font-size:24px;
+  margin-bottom:20px;
+  letter-spacing:1px;
+}
+
+/* ICONOS CENTRALES */
+
+.dresscode img{
+  filter:grayscale(100%);
+  opacity:0.9;
+}
+
+/* TEXTO */
+
+.dresscode p,
+.rsvp p{
+  font-size:17px;
+}
+
+/* RSVP LINKS */
+
+.rsvp-icons a{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  font-weight:600;
+}
+
+.rsvp-icons img{
+  width:32px;
+}
+
+/* HOVER SUAVE */
+
+.rsvp-icons a:hover{
+  transform:scale(1.05);
+  transition:.3s;
+}

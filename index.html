@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Henry & Malena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+<div class="heart">❤</div>
+
+
+<body style="overflow: hidden;">
+
+<!-- BOTÓN MÚSICA -->
+<button id="musicBtn">
+  <i class="fa-solid fa-music"></i>
+</button>
+
+
+<audio id="music" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+
+
+<!-- SOBRE -->
+<div class="overlay" id="overlay">
+  <div class="envelope" onclick="openEnvelope()">
+    <div class="flap"></div>
+    <div class="envelope-body"></div>
+    <div class="envelope-text">
+      <strong>Henry & Malena</strong>
+      <span>29.08.2026</span>
+    </div>
+  </div>
+</div>
+
+<main id="content">
+
+  <!-- ANILLOS -->
+  <div class="rings">
+    <img src="icons/wedding-ring.png" class="ring">
+    
+  </div>
+
+  <!-- TEXTO INICIAL -->
+  <div class="bible fade-section">
+    <p>
+      Después de 7 años<br>
+      llenos de aventuras, risas,<br>
+      tristezas y de mucho amor.<br><br>
+      Hemos decidido<br><br>
+      <strong style="font-size:20px;">Casarnos</strong><br><br>
+      Y queremos compartir nuestra felicidad<br>
+      con ustedes y disfrutar juntos<br>
+      este momento inolvidable
+    </p>
+  </div>
+
+  <!-- NOMBRES -->
+  <h1 class="names fade-section">Henry & Malena</h1>
+
+  <!-- FOTO -->
+  <img class="photo fade-section" src="https://i.postimg.cc/Gty7bJks/Gemini-Generated-Image-1rgo7t1rgo7t1rgo.png" alt="Henry y Malena">
+
+  <!-- TEXTO BÍBLICO -->
+  <div class="bible fade-section">
+    <p>
+      Por tanto el hombre dejará a su padre y a su madre, y se unirá a su esposa,
+      y los dos serán una sola carne.<br>
+      Así que ya no son dos, sino uno solo.<br>
+      Por tanto, lo que Dios ha unido, que no lo separe el hombre.
+    </p>
+    <span>Mateo 19:5–6</span>
+  </div>
+
+  <!-- BENDICIÓN -->
+  <div class="bible fade-section">
+    <p>
+      Con la bendición de Dios,<br>
+      y nuestros queridos padres.
+    </p>
+  </div>
+
+  <!-- PADRES -->
+  <div class="section fade-section">
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:150px; text-align:left;">
+        <h3>Padres del Novio</h3>
+        <p>René Guallichico<br>Rocío Flores</p>
+      </div>
+      <div style="flex:1; min-width:150px; text-align:right;">
+        <h3>Padres de la Novia</h3>
+        <p>Luis Melgar<br>Elisa Chalparizán</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PADRINOS -->
+  <div class="bible fade-section">
+    <p>Y en compañía de nuestros padrinos.</p>
+  </div>
+
+  <div class="section fade-section">
+    <div style="display:flex; justify-content:space-between;">
+      <strong>Freddy Guallichico</strong>
+      <strong>Wendy Herrera</strong>
+    </div>
+  </div>
+
+  <!-- SEPARADOR -->
+  <div class="fade-section" style="margin:35px 0; font-size:30px; color:#9bb8b3; text-align:center;">
+    ❤ ❤ ❤
+  </div>
+
+  <!-- COUNTDOWN -->
+  <p class="countdown-title fade-section">
+    <strong>Nuestro gran día comienza en…</strong>
+  </p>
+
+  <div id="countdown" class="countdown fade-section"></div>
+
+  <p class="date fade-section">Sábado 29 de Agosto · 15:30</p>
+
+  <!-- CALENDARIO -->
+  <div class="calendar fade-section">
+    <h3>Agosto 2026</h3>
+    <div class="calendar-grid">
+      <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      <span></span><span></span><span></span><span></span><span></span><span>1</span><span>2</span>
+      <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+      <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+      <span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span>
+      <span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
+      <span>28</span><span class="heart-day">29</span><span>30</span><span>31</span>
+    </div>
+  </div>
+
+  <!-- UBICACIÓN -->
+  <div class="section fade-section">
+    <div style="font-size:28px; margin-bottom:10px;">
+      <img src="icons/church2.png" width="40">
+      <img src="icons/champagne.png" width="40">
+    </div>
+
+    <h3>Ceremonia – Recepción</h3>
+    <p>Quinta San Andrés</p>
+    <a class="location" href="https://maps.app.goo.gl/85HgH7MKStD4TaUT7" target="_blank">
+      Ver ubicación
+    </a>
+  </div>
+
+  <!-- ITINERARIO -->
+  <div class="section fade-section">
+    <h3>Itinerario</h3>
+
+    <p><img src="icons/church.png" width="22"> <strong>15:30</strong> Ceremonia Religiosa</p>
+    <p><img src="icons/cheers.png" width="22"> <strong>17:00</strong> Cóctel de bienvenida</p>
+    <p><img src="icons/entrance.png" width="22"> <strong>18:00</strong> Recepción</p>
+    <p><img src="icons/food.png" width="22"> <strong>19:00</strong> Cena</p>
+  </div>
+
+  <!-- DRESSCODE -->
+  <div class="dresscode fade-section">
+    <h3>Código de Vestimenta</h3>
+
+    <div style="display:flex; justify-content:center; gap:50px; margin:22px 0;">
+      <div style="text-align:center;">
+        <img src="icons/men.png" width="60">
+        <p>Traje</p>
+      </div>
+      <div style="text-align:center;">
+        <img src="icons/women.png" width="60">
+        <p>Vestido</p>
+      </div>
+    </div>
+
+    <p><strong>Formal</strong></p>
+    <p>Mujeres: Vestido largo<br>Hombres: Traje</p>
+    <p style="font-style:italic;">Agradecemos reservar el color blanco para la novia.</p>
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp fade-section">
+  <h3>Confirma tu asistencia</h3>
+
+  <p style="margin:18px 0; line-height:1.7; font-style:italic;">
+    Tu presencia en este día tan especial es muy importante para nosotros  
+    y esperamos contar con tu presencia.
+  </p>
+
+  <div class="rsvp-icons">
+    <a href="https://wa.me/593983171132?text=Hola%20Henry%2C%20con%20mucho%20gusto%20confirmo%20mi%20asistencia%20a%20su%20boda%20❤️🥂%0A%0AEstaré%20presente%20en%20este%20día%20tan%20especial%20para%20ustedes%20✅" target="_blank">
+
+      <img src="icons/novio.png" width="26">
+      <span>Confirmar con el Novio</span>
+    </a>
+
+    <a href="https://wa.me/593962985045?text=Hola%20Malena%2C%20con%20mucho%20gusto%20confirmo%20mi%20asistencia%20a%20su%20boda%20❤️🥂%0A%0AEstaré%20presente%20en%20este%20día%20tan%20especial%20para%20ustedes%20✅" target="_blank">
+
+      <img src="icons/novia.png" width="26">
+      <span>Confirmar con la Novia</span>
+    </a>
+  </div>
+</div>
+
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
+
