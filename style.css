@@ -168,53 +168,232 @@ p{
   100%{transform:scale(1);}
 }
 
-/* ===============================
-   SOBRE
-=============================== */
+/* ==========================================================================
+   SECCIÓN COMPLETA DEL OVERLAY Y SOBRE PLANO CON ANIMACIÓN DE APERTURA
+   ========================================================================== */
 
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(247,251,251,0.96);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 251, 251, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.envelope{
-  width:340px;
-  height:230px;
-  background:#9bb8b3;
-  border-radius:10px;
-  position:relative;
-  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+/* Clase que se añade por JavaScript al dar click */
+.overlay.fade-out-up {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
-.envelope-body{
-  position:absolute;
-  inset:0;
-  background:#eaf3f2;
-  border-radius:10px;
+.envelope-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  background-color: transparent;
 }
 
-.flap{
-  position:absolute;
-  top:0;
-  width:100%;
-  height:50%;
-  background:#9bb8b3;
-  clip-path:polygon(0 0,100% 0,50% 100%);
+/* Tarjeta del Sobre Plano */
+.envelope {
+  width: 100%;
+  height: 600px;
+  max-height: 80vh;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: 
+    linear-gradient(135deg, #9bb8b3 0%, #77948f 100%),
+    url("https://www.transparenttextures.com/patterns/linen.png");
+  background-size: cover;
+  transition: transform 0.3s ease;
 }
 
-.envelope-text{
-  position:absolute;
-  bottom:40px;
-  width:100%;
-  font-size:20px;
-  color:#1f1f1f;
-  font-weight:600;
+.envelope:hover {
+  transform: scale(1.02);
 }
+
+/* Marcos Decorativos Lineales */
+.envelope-border {
+  position: absolute;
+  pointer-events: none;
+  border: 1.5px solid #eaf3f2;
+  border-radius: 6px;
+  z-index: 5;
+}
+.envelope-border-outer { inset: 15px; }
+.envelope-border-inner { inset: 22px; }
+
+/* Cuerpo Central */
+.envelope-body-flat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* Logotipo Circular Central */
+.envelope-logo {
+  margin-bottom: 25px;
+}
+
+.logo-circle {
+  width: 85px;
+  height: 85px;
+  border: 2px dashed #eaf3f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(234, 243, 242, 0.1);
+}
+
+.logo-circle span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  color: #eaf3f2;
+}
+
+/* Textos del Sobre */
+.envelope-text-container {
+  text-align: center;
+  color: #eaf3f2;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  width: 100%;
+}
+
+.envelope-text-container strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.envelope-subtitle {
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #eaf3f2;
+}
+
+.envelope-date {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* ==========================================================================
+   INDICADOR DE CLICK (.clic)
+   ========================================================================== */
+
+.indicador-click {
+  text-align: center;
+  margin-top: 25px;
+  width: 100%;
+}
+
+.indicador-click p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #9bb8b3;
+  animation: parpadeo 2.5s infinite;
+  margin: 0;
+}
+
+@keyframes parpadeo {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* Ajustes en Celulares */
+@media (max-width: 480px) {
+  .envelope { height: 500px; }
+  .envelope-text-container strong { font-size: 24px; }
+  .envelope-subtitle { font-size: 30px; }
+  .envelope-date { font-size: 12px; }
+  .logo-circle { width: 75px; height: 75px; }
+  .logo-circle span { font-size: 24px; }
+}
+
+
+/* ==========================================================================
+   ESTILO DEL MONOGRAMA CENTRAL (LETRAS DENTRO DEL CÍRCULO)
+   ========================================================================== */
+
+.envelope-monogram {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.monogram-inner {
+  width: 110px; /* Aumentamos el diámetro para dar espacio a la tipografía */
+  height: 110px;
+  border-radius: 50%;
+  border: 1px solid rgba(234, 243, 242, 0.4);
+  outline: 1.5px dashed #eaf3f2;
+  outline-offset: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(234, 243, 242, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.monogram-inner span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px; /* Reducimos el tamaño para garantizar que no sobrepase el borde */
+  color: #eaf3f2;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  line-height: 1;
+  display: inline-block;
+  padding: 0 10px; /* Margen interno de seguridad */
+}
+
+/* Ajustes en Celulares */
+@media (max-width: 480px) {
+  .monogram-inner {
+    width: 95px;
+    height: 95px;
+    outline-offset: -5px;
+  }
+  .monogram-inner span {
+    font-size: 24px;
+    padding: 0 8px;
+  }
+}
+
+
 
 /* ===============================
    BOTON MUSICA
@@ -464,3 +643,4 @@ p{
         box-sizing: border-box !important;
     }
 }
+
