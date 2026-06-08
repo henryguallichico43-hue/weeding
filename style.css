@@ -168,24 +168,28 @@ p{
   100%{transform:scale(1);}
 }
 
+
 /* ==========================================================================
-   SECCIÓN COMPLETA DEL OVERLAY, SOBRE Y MONOGRAMA AUTO-RESPONSIVE
+   SECCIÓN COMPLETA DEL OVERLAY, SOBRE Y MONOGRAMA (CORRECCIÓN TOTAL MÓVIL)
    ========================================================================== */
 
 .overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(247, 251, 251, 0.98);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f7fbfb; /* Forzamos fondo sólido para que no se trasluzca nada */
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 99999; /* Por encima de cualquier elemento */
   padding: 15px;
   box-sizing: border-box;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
 }
 
-/* Clase que se añade por JavaScript al dar click */
+/* Animación de salida */
 .overlay.fade-out-up {
   opacity: 0;
   transform: translateY(-100%);
@@ -198,28 +202,26 @@ p{
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 360px; /* Ancho seguro para cualquier celular moderno */
+  max-width: 350px; /* Tamaño controlado para pantallas delgadas */
   box-sizing: border-box;
 }
 
-/* Tarjeta del Sobre Plano Proporcional */
+/* Tarjeta del Sobre */
 .envelope {
   width: 100%;
-  aspect-ratio: 2 / 3; /* Proporción limpia de tarjeta vertical */
-  max-height: 75vh; /* No choca con las barras del navegador móvil */
+  height: 520px; /* Altura fija segura para celulares */
+  max-height: 70vh; /* Evita desbordes en pantallas pequeñas */
   position: relative;
   cursor: pointer;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
   border-radius: 12px;
   overflow: hidden;
-  background: 
-    linear-gradient(135deg, #9bb8b3 0%, #77948f 100%),
-    url("https://www.transparenttextures.com/patterns/linen.png");
-  background-size: cover;
-  transition: transform 0.3s ease;
+  background: #9bb8b3; /* Color sólido de respaldo */
+  background-image: linear-gradient(135deg, #9bb8b3 0%, #77948f 100%);
+  display: block; /* Asegura su renderizado */
 }
 
-/* Marcos Decorativos Lineales */
+/* Marcos Decorativos */
 .envelope-border {
   position: absolute;
   pointer-events: none;
@@ -230,7 +232,7 @@ p{
 .envelope-border-outer { inset: 12px; }
 .envelope-border-inner { inset: 18px; }
 
-/* Cuerpo Central */
+/* Contenedor de elementos internos */
 .envelope-body-flat {
   position: absolute;
   inset: 0;
@@ -240,23 +242,20 @@ p{
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
-  z-index: 2;
+  z-index: 10;
 }
 
-/* Monograma Adaptativo (Se encoge según el contenedor) */
+/* Monograma con Iniciales */
 .envelope-monogram {
-  margin-bottom: 5vh; /* Margen proporcional a la pantalla */
+  margin-bottom: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .monogram-inner {
-  width: 24vw; /* Se adapta dinámicamente al ancho del dispositivo */
-  height: 24vw;
-  max-width: 90px; /* Tamaño tope en pantallas grandes */
-  max-height: 90px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   border: 1px solid rgba(234, 243, 242, 0.4);
   outline: 1.5px dashed #eaf3f2;
@@ -265,26 +264,18 @@ p{
   align-items: center;
   justify-content: center;
   background: rgba(234, 243, 242, 0.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
 }
 
 .monogram-inner span {
   font-family: 'Great Vibes', cursive;
-  font-size: 7vw; /* Escala de fuente fluida */
-  max-font-size: 26px; /* Evita desbordamiento en PC */
+  font-size: 28px;
   color: #eaf3f2;
   white-space: nowrap;
   line-height: 1;
-  display: block;
 }
 
-/* Al tope en PC o pantallas anchas fijamos tamaños */
-@media (min-width: 420px) {
-  .monogram-inner span { font-size: 26px; }
-}
-
-/* Textos del Sobre */
+/* Textos */
 .envelope-text-container {
   text-align: center;
   color: #eaf3f2;
@@ -313,10 +304,10 @@ p{
 
 .envelope-date {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
 /* ==========================================================================
@@ -344,11 +335,13 @@ p{
   100% { opacity: 0.3; }
 }
 
-/* Ajustes finos para celulares muy angostos */
+/* Ajustes pantallas muy pequeñas */
 @media (max-width: 360px) {
+  .envelope { height: 440px; }
+  .monogram-inner { width: 75px; height: 75px; }
+  .monogram-inner span { font-size: 24px; }
   .envelope-text-container strong { font-size: 20px; }
   .envelope-subtitle { font-size: 26px; }
-  .envelope-date { font-size: 11px; }
 }
 
 /* ===============================
