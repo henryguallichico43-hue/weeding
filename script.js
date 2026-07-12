@@ -3,6 +3,16 @@ const musicBtn = document.getElementById("musicBtn");
 const overlay = document.getElementById("overlay");
 const content = document.getElementById("content");
 
+///////////////////////////////
+function setVH() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+setVH();
+window.addEventListener('resize', setVH);
+window.addEventListener('orientationchange', setVH);
+
+
 // Forzar a la página a ir arriba del todo cada vez que se recarga
 window.addEventListener('load', () => {
   overlay.style.display = 'none';
@@ -10,7 +20,7 @@ window.addEventListener('load', () => {
   overlay.style.display = 'flex';
 });
 
-
+//////////////////////
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
