@@ -179,14 +179,17 @@ p{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f7fbfb; /* Forzamos fondo sólido para que no se trasluzca nada */
+  background-color: #f7fbfb;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999; /* Por encima de cualquier elemento */
+  z-index: 99999;
   padding: 15px;
   box-sizing: border-box;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
 /* Animación de salida */
@@ -209,16 +212,20 @@ p{
 /* Tarjeta del Sobre */
 .envelope {
   width: 100%;
-  height: 520px; /* Altura fija segura para celulares */
-  max-height: 70vh; /* Evita desbordes en pantallas pequeñas */
+  height: 520px;
+  max-height: 70vh;
   position: relative;
   cursor: pointer;
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
   border-radius: 12px;
   overflow: hidden;
-  background: #9bb8b3; /* Color sólido de respaldo */
+  background: #9bb8b3;
   background-image: linear-gradient(135deg, #9bb8b3 0%, #77948f 100%);
-  display: block; /* Asegura su renderizado */
+  display: block;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Marcos Decorativos */
