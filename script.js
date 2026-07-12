@@ -4,6 +4,14 @@ const overlay = document.getElementById("overlay");
 const content = document.getElementById("content");
 
 // Forzar a la página a ir arriba del todo cada vez que se recarga
+window.addEventListener('load', () => {
+  overlay.style.display = 'none';
+  void overlay.offsetHeight; // fuerza reflow
+  overlay.style.display = 'flex';
+});
+
+
+
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
@@ -106,3 +114,4 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 sections.forEach(s => observer.observe(s));
+
