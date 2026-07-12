@@ -558,45 +558,5 @@ p{
   transition:.3s;
 }
 
-/* Reglas especiales para celulares */
-@media (max-width: 768px) {
-    /* El contenedor principal se adapta al ancho de la pantalla */
-    body, .contenedor, .main-container, .wrapper { 
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 10px !important;
-        box-sizing: border-box;
-    }
 
-    /* Las imágenes e iconos no se desbordan */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Si tienes columnas (por ejemplo, cajas de texto lado a lado), 
-       esto hace que se pongan una debajo de la otra en el celular */
-    .row, .flex-container, .grid-container {
-        display: flex;
-        flex-direction: column !important;
-        align-items: center;
-    }
-
-    /* Ajuste de textos grandes para que no se corten */
-    h1 {
-        font-size: 2rem !important;
-    }
-    h2 {
-        font-size: 1.5rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Fuerza a absolutamente todos los bloques principales a no superar el ancho del celular */
-    div, section, main, body {
-        max-width: 100% !important;
-        width: auto !important;
-        box-sizing: border-box !important;
-    }
-}
 
